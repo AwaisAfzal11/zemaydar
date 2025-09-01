@@ -5,6 +5,7 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
+import logo from './logo.webp'
 
 function Mobile() {
   const [nav, setNav] = useState(false);
@@ -48,12 +49,12 @@ function Mobile() {
   
 
   return (
-    <div className="lg:hidden sticky top-0 bg-white h-16 mb-2 flex items-center w-full z-[10000]">
+    <div className="lg:hidden sticky top-0 bg-white h-16 mb-2 flex items-center w-full z-[10000] shadow-md">
       <div className="sectionlayout poppins text-[#6C6C6C] flex justify-between items-center w-full">
         <div className="flex items-center justify-center">
           <NavLink to="/" onClick={handleLinkClick}>
             <img
-              src="https://rightone.ae/Assets/Logo/whiteLogo.png"
+              src={logo}
               loading="lazy"
               className="max-h-[9vh] max-w-[80%]"
               alt="Logo"
@@ -61,19 +62,14 @@ function Mobile() {
           </NavLink>
         </div>
         <div className="flex items-center gap-0">
-          <button className="inline-flex items-center hover:text-[#3D498A]">
-            <img
-              src={img1}
-              alt="Certificate"
-              className="h-16"
-              loading="lazy"
-            />
+          <button className="inline-flex items-center hover:text-[#EC1E24]">
+            
           </button>
           <button
-            className="inline-flex items-center rounded-md hover:text-[#3D498A] py-2 px-4 text-lg font-medium"
+            className="inline-flex items-center rounded-md hover:text-[#EC1E24] py-2 px-4 text-lg font-medium"
             onClick={handleCrossNav}
           >
-            <FaBars size={20} className="text-[#3D498A]" />
+            <FaBars size={20} className="text-[#EC1E24]" />
           </button>
         </div>
         <div className={`navbar-menu ${nav ? "open" : ""}`}>
@@ -82,7 +78,7 @@ function Mobile() {
               <div className="flex justify-end pt-4">
                 <TfiClose
                   onClick={handleCrossNav}
-                  className="rounded p-1 font-bold hover:bg-black/5"
+                  className="rounded p-1 font-bold hover:bg-black/5 text-[#EC1E24]"
                   size={24}
                 />
               </div>
@@ -98,8 +94,8 @@ function Mobile() {
                           <NavLink
                             to={link.path}
                             className={({ isActive }) =>
-                              `${
-                                isActive ? "text-[#3D498A]" : "text-[#3D498A]"
+                              `hover:text-[#EC1E24] ${
+                                isActive ? "text-[#EC1E24]" : "text-gray-800"
                               }`
                             }
                           >
@@ -119,8 +115,8 @@ function Mobile() {
                                   to={sublink.path}
                                   key={subIndex}
                                   className={({ isActive }) =>
-                                    `text-[#454545] text-md p-5 py-4 pl-3 hover:rounded hover:bg-black/5 ${
-                                      isActive ? "text-[#3D498A]" : ""
+                                    `text-[#454545] text-md p-5 py-4 pl-3 hover:rounded hover:bg-black/5 hover:text-[#EC1E24] ${
+                                      isActive ? "text-[#EC1E24]" : ""
                                     }`
                                   }
                                   onClick={handleNav}
@@ -136,8 +132,8 @@ function Mobile() {
                       <NavLink
                         to={link.path}
                         className={({ isActive }) =>
-                          `cursor-pointer px-1 flex items-center justify-between Georgian py-3 pl-3 font-medium hover:rounded hover:bg-black/5 ${
-                            isActive ? "text-[#B19361]" : "text-[#6C6C6C]"
+                          `cursor-pointer px-1 flex items-center justify-between Georgian py-3 pl-3 font-medium hover:rounded hover:bg-black/5 hover:text-[#EC1E24] ${
+                            isActive ? "text-[#EC1E24]" : "text-[#6C6C6C]"
                           }`
                         }
                         onClick={handleNav}

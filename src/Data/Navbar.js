@@ -17,15 +17,7 @@ const Navbar = {
         {
             name: "Contact",
             path: "/contact"
-        },
-        {
-            name: "Case Studies",
-            path: "/case-studies"
-        },
-        {
-            name: "Insgihts",
-            path: "/insights"
-        },
+        },        
     ]
 };
 

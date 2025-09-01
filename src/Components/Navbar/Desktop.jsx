@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import logo from './logo.webp'
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Navbar from "../../Data/Navbar";
@@ -18,21 +19,21 @@ const Desktop = () => {
     window.scrollTo(0, 0);
   };
 
-  const img1 = `${process.env.REACT_APP_DOMAIN}/Assets/Logo/experience.png`;
+  // const img1 = `${process.env.REACT_APP_DOMAIN}/Assets/logo02.webp`;
 
 
   return (
     <>
       
-      <div className="hidden lg:block sticky top-0  bg-white z-50">
+      <div className="hidden lg:block sticky top-0 bg-white z-50">
         <div className="flex items-center justify-between border-b px-8">
           {/* Logo */}
           <div>
             <NavLink to="/" onClick={handleNavClick}>
               <img
-                src="../"
-                alt="Company Logo"
-                className="h-20 w-auto"
+                src={logo}
+                alt="Company Logo..."
+                className="h-10 my-4 w-auto"
                 loading="lazy"
               />
             </NavLink>
@@ -48,7 +49,7 @@ const Desktop = () => {
                     className={({ isActive }) =>
                       `px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-base
                       ${
-                        isActive ? "font-bold text-[#3D498A]" : "text-gray-600"
+                        isActive ? "font-bold text-[#EC1E24]" : "text-gray-600"
                       } 
                       [font-size:clamp(0.5rem,0.4rem_+_0.5vw,1rem)]`
                     }
@@ -64,7 +65,7 @@ const Desktop = () => {
                         `px-4 py-2 rounded-md hover:bg-gray-100 transition-colors flex items-center
                         ${
                           isActive
-                            ? "font-bold text-[#3D498A]"
+                            ? "font-bold text-[#EC1E24]"
                             : "text-gray-600"
                         }
                         [font-size:clamp(0.5rem,0.4rem_+_0.5vw,1rem)]`
@@ -79,7 +80,7 @@ const Desktop = () => {
                       lazy"
                       />
                     </NavLink>
-                    <div className="absolute invisible group-hover:visible  mt-0 w-64 bg-white shadow-lg rounded-md">
+                    <div className="absolute invisible group-hover:visible mt-0 w-64 bg-white shadow-lg rounded-md">
                       {link.submenu.map((sublink, subIndex) => (
                         <NavLink
                           key={subIndex}
@@ -89,7 +90,7 @@ const Desktop = () => {
                             `block px-4 py-2 hover:bg-gray-100 capitalize transition-colors
                             ${
                               isActive
-                                ? "font-bold text-[#3D498A]"
+                                ? "font-bold text-[#EC1E24]"
                                 : "text-gray-600"
                             }`
                           }
