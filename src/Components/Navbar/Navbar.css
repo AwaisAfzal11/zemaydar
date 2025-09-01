@@ -1,0 +1,52 @@
+.dropown_menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.dropown_menu_trigger:hover .dropown_menu,
+.dropown_menu:hover {
+  opacity: 1;
+  transform: translateY(0px);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+.navbar-menu {
+  top: 0;
+  right: -100%;
+  width: 18rem;
+  min-height: 100vh;
+  background-color: #050505;
+  color: #6C6C6C;
+  overflow-y: auto;
+  transition: right 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  z-index: 10000;
+  visibility: hidden;
+  position: fixed;
+}
+
+.navbar-menu.open {
+  right: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Submenu styles */
+.submenu {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.submenu.open {
+  opacity: 1;
+  transform: translateY(0);
+}
