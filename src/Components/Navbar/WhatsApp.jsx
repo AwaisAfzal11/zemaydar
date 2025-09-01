@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 export default function WhatsApp() {
   return (
     <a
-      href="https://wa.me/+971509833635"
+      href="https://wa.me/+923001311111"
       target="_blank"
       rel="noopener noreferrer"
       style={{

@@ -7,16 +7,16 @@ const Navbar = {
       
         {
             name: "Services",
-            path: "/services"
+            path: "/"
         },
         {
             name: "About",
-            path: "/about"
+            path: "/"
         },
     
         {
             name: "Contact",
-            path: "/contact"
+            path: "/"
         },        
     ]
 };
