@@ -76,13 +76,13 @@ const Desktop = () => {
                     to={link.path}
                     onClick={handleNavClick}
                     className={({ isActive }) =>
-                      `px-4 py-2 rounded-md hover:bg-white/20 transition-colors text-base
+                      // CHANGED: Removed the clamp function and changed text-base to text-lg
+                      `px-4 py-2 rounded-md hover:bg-white/20 transition-colors text-lg
                       ${
                         isActive 
                         ? "font-bold text-[#BD872E]" 
                         : isScrolled ? "text-gray-600" : "text-white"
-                      } 
-                      [font-size:clamp(0.5rem,0.4rem_+_0.5vw,1rem)]`
+                      }`
                     }
                   >
                     {link.name}
@@ -93,13 +93,13 @@ const Desktop = () => {
                       to={link.path}
                       onClick={handleNavClick}
                       className={({ isActive }) =>
-                        `px-4 py-2 rounded-md hover:bg-white/20 transition-colors flex items-center
+                        // CHANGED: Removed the clamp function and changed text-base to text-lg
+                        `px-4 py-2 rounded-md hover:bg-white/20 transition-colors flex items-center text-lg
                         ${
                           isActive
                             ? "font-bold text-[#BD872E]"
                             : isScrolled ? "text-gray-600" : "text-white"
-                        }
-                        [font-size:clamp(0.5rem,0.4rem_+_0.5vw,1rem)]`
+                        }`
                       }
                     >
                       {link.name}
