@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
-import logo from '../../Assets/logo05.png'
+import logo from '../../Assets/golden-logo.png'
 
 function Mobile() {
   const [nav, setNav] = useState(false);
