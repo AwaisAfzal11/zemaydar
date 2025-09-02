@@ -56,7 +56,13 @@ src/index.css
 src/index.js
 src/Pages/About/About.jsx
 src/Pages/Contact/Contact.jsx
+src/Pages/Home/Benefits.jsx
+src/Pages/Home/ExitStrategy.jsx
+src/Pages/Home/Hero.jsx
 src/Pages/Home/Home.jsx
+src/Pages/Home/Issues.jsx
+src/Pages/Home/Methods.jsx
+src/Pages/Home/Risks.jsx
 tailwind.config.js
 </directory_structure>
 
@@ -194,29 +200,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-</file>
-
-<file path="public/index.html">
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="Digiopt Consulting"
-      content="It is the react starter we will use to start or initilize any react project.."
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Digiopt Consulting</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
-</html>
 </file>
 
 <file path="src/Components/Form/Form23then135.jsx">
@@ -454,39 +437,6 @@ export default Form;
 }
 </file>
 
-<file path="src/Components/Navbar/WhatsApp.jsx">
-import React from 'react';
-import '@fortawesome/fontawesome-free/css/all.css';
-
-export default function WhatsApp() {
-  return (
-    <a
-      href="https://wa.me/+923001311111"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        position: 'fixed',
-        bottom: '20px',
-        left: '20px',
-        backgroundColor: '#25D366',
-        color: '#fff',
-        borderRadius: '50%',
-        width: '50px',
-        height: '50px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        zIndex: 1000,
-        textDecoration: 'none',
-      }}
-    >
-      <i className="fab fa-whatsapp" style={{ fontSize: '24px' }}></i>
-    </a>
-  );
-}
-</file>
-
 <file path="src/index.css">
 @tailwind base;
 @tailwind components;
@@ -615,27 +565,109 @@ function Contact() {
 export default Contact
 </file>
 
-<file path="src/Pages/Home/Home.jsx">
+<file path="src/Pages/Home/Benefits.jsx">
 import React from 'react';
-import hero from '../../Assets/hero.webp';
+import { CheckCircle2 } from 'lucide-react';
 
-const Home = () => {
+import img1 from '../../Assets/img2.jpg'; // Your background image
+
+const benefits = [
+  "Strategic Location",
+  "Verified Ownership",
+  "Guaranteed Buy-Back Option",
+  "Zero Service Fees",
+  "Minimum Investment",
+  "Easy Entry - Just 1 Kanal",
+  "Perfect for Everyone"
+];
+
+const Benefits = () => {
   return (
-    // The hero image is added as a background using an inline style
+    // 1. Set the container to relative and apply the background image
     <div 
-      className="relative h-screen bg-cover bg-center" 
+      className="relative py-20 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${img1})` }}
+    >
+      {/* 2. Add a semi-transparent overlay to darken the background */}
+      <div className="absolute inset-0 bg-[#3D498A] opacity-80"></div>
+
+      {/* 3. Make the content container relative to sit on top of the overlay */}
+      <div className="relative container mx-auto px-6 z-10">
+        <div className="text-center mb-12">
+          {/* 4. Change text colors to white for better readability */}
+          <h2 className="text-3xl font-bold text-white">Member Benefits</h2>
+          <p className="text-gray-200 mt-2">Unlock exclusive advantages with Goldmark Land Ventures.</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit, index) => (
+            // 5. Add a subtle background to each benefit item for a "glassmorphism" effect
+            <div key={index} className="flex items-start space-x-4 p-4 bg-white/10 rounded-lg border border-white/20 backdrop-blur-sm">
+              <CheckCircle2 className="h-8 w-8 text-green-400 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-xl font-semibold text-white">{benefit}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Benefits;
+</file>
+
+<file path="src/Pages/Home/ExitStrategy.jsx">
+import React from 'react';
+import { Briefcase, TrendingUp, Repeat, UserCheck } from 'lucide-react';
+
+const strategies = [
+    { icon: <Briefcase size={40}/>, title: 'Buyback Payment', description: 'The company can repurchase the property after two years.' },
+    { icon: <UserCheck size={40}/>, title: 'Upcoming Participation', description: 'Opportunity to join future housing projects.' },
+    { icon: <TrendingUp size={40}/>, title: 'High Returns', description: 'Potential for profit through bulk land sales.' },
+    { icon: <Repeat size={40}/>, title: 'Transferring', description: 'The certificate of ownership can be transferred.' },
+];
+
+const ExitStrategy = () => {
+    return (
+        <div className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+                <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Your Exit Strategy</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {strategies.map((strategy, index) => (
+                        <div key={index} className="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:bg-[#3D498A] hover:text-white transition-all duration-300 group">
+                            <div className="text-[#3D498A] group-hover:text-white inline-block mb-4">
+                                {strategy.icon}
+                            </div>
+                            <h3 className="text-xl font-semibold mb-2">{strategy.title}</h3>
+                            <p className="text-gray-600 group-hover:text-gray-200">{strategy.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ExitStrategy;
+</file>
+
+<file path="src/Pages/Home/Hero.jsx">
+import React from 'react';
+import hero from '../../Assets/hero.webp'; // Assuming you have a hero image here
+
+const Hero = () => {
+  return (
+    <div
+      className="relative h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${hero})` }}
     >
-      
-      {/* This overlay darkens the background image to make the text more readable */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
-      {/* Content */}
+      <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
           Goldmark Land Ventures
         </h1>
-        <p className="text-lg md:text-2xl font-light">
+        <p className="text-lg md:text-2xl font-light animate-fade-in-up">
           Transform Your Property Buying Game Plan
         </p>
       </div>
@@ -643,7 +675,116 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Hero;
+</file>
+
+<file path="src/Pages/Home/Issues.jsx">
+import React from 'react';
+import { AlertCircle } from 'lucide-react';
+
+const issues = [
+  "Delay in property possession",
+  "Discrepancies in land measurements",
+  "Uncertain ownership rights",
+  "Incomplete fixture or missing amenities"
+];
+
+const Issues = () => {
+  return (
+    <div className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Facing Property Investment Hurdles?</h2>
+        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">Tired of the common issues that plague property investors? We address them head-on.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {issues.map((issue, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+              <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-700">{issue}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Issues;
+</file>
+
+<file path="src/Pages/Home/Methods.jsx">
+import React from 'react';
+
+const investmentMethods = [
+  {
+    title: "Method 01 (Intaqal)",
+    description: "Direct transfer of ownership to the investor's name.",
+  },
+  {
+    title: "Method 02 (Post-Dated Cheques)",
+    description: "Involves a buy-back agreement with the company.",
+  },
+  {
+    title: "Method 03 (Certificate)",
+    description: "The company issues a certificate of ownership equal to the land's purchase value.",
+  },
+];
+
+const Methods = () => {
+  return (
+    <div className="py-20 bg-gray-100">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-800">The Way to Join Us</h2>
+          <p className="text-gray-600 mt-2">Choose the investment method that suits you best.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          {investmentMethods.map((method, index) => (
+            <div key={index} className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-[#3D498A]">
+              <h3 className="text-2xl font-bold text-[#3D498A] mb-4">{method.title}</h3>
+              <p className="text-gray-600">{method.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Methods;
+</file>
+
+<file path="src/Pages/Home/Risks.jsx">
+import React from 'react';
+import { ShieldAlert } from 'lucide-react';
+
+const risks = [
+  "Unverified and disputed properties",
+  "No management support post-purchase",
+  "Discrepancies in land measurements"
+];
+
+const Risks = () => {
+  return (
+    <div className="bg-red-50 py-20">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-red-800">Risks of Investing Without Expertise</h2>
+          <p className="text-red-700 mt-2">Navigating the raw land market alone can be perilous. Here's why.</p>
+        </div>
+        <div className="flex flex-wrap justify-center gap-8">
+          {risks.map((risk, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-6 flex items-center gap-4 max-w-sm w-full">
+              <ShieldAlert className="h-10 w-10 text-red-600 flex-shrink-0" />
+              <p className="text-gray-700 font-medium">{risk}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Risks;
 </file>
 
 <file path="tailwind.config.js">
@@ -658,112 +799,6 @@ module.exports = {
   },
   plugins: [],
 }
-</file>
-
-<file path="package.json">
-{
-  "name": "react-app-starter",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.0.0",
-    "@headlessui/react": "^2.1.2",
-    "@heroicons/react": "^2.1.5",
-    "@testing-library/jest-dom": "^6.4.8",
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.2",
-    "aos": "^2.3.4",
-    "axios": "^1.7.7",
-    "fs": "^0.0.1-security",
-    "js-cookie": "^3.0.5",
-    "lucide-react": "^0.542.0",
-    "marked": "^15.0.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-helmet": "^6.1.0",
-    "react-helmet-async": "^2.0.5",
-    "react-icons": "^5.2.1",
-    "react-multi-carousel": "^2.8.5",
-    "react-redux": "^9.1.2",
-    "react-router-dom": "^6.25.1",
-    "react-scripts": "5.0.1",
-    "react-scroll": "^1.9.0",
-    "react-share": "^5.1.0",
-    "redux": "^5.0.1",
-    "swiper": "^11.1.14",
-    "web-vitals": "^4.2.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "generate-sitemap": "node sitemap-generator.js",
-    "build": "npm run generate-sitemap && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/parser": "^7.26.3",
-    "@babel/traverse": "^7.26.4",
-    "@tailwindcss/typography": "^0.5.15"
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "tailwind.config.js",
-  "author": "",
-  "license": "ISC"
-}
-</file>
-
-<file path="src/App.js">
-import "./index.css";
-import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
-import Footer from "./Components/Footer/Footer";
-import Home from "./Pages/Home/Home";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import About from "./Pages/About/About";
-import Contact from "./Pages/Contact/Contact";
-
-function App() {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      {/* <Footer /> */}
-    </>
-  );
-}
-
-export default App;
 </file>
 
 <file path="src/Components/Footer/Footer.jsx">
@@ -929,6 +964,188 @@ const Footer = () => {
 export default Footer;
 </file>
 
+<file path="src/Components/Navbar/Navbar.jsx">
+import './Navbar.css'
+import React from 'react'
+import Mobile from './Mobile'
+import Desktop from './Desktop'
+import WhatsApp from './WhatsApp'
+
+function Navbar() {
+  return (
+    <>
+      <Mobile />
+      <Desktop />
+      <WhatsApp />
+    </>
+  )
+}
+
+export default Navbar
+</file>
+
+<file path="src/Components/Navbar/WhatsApp.jsx">
+import React from 'react';
+import '@fortawesome/fontawesome-free/css/all.css';
+
+export default function WhatsApp() {
+  return (
+    <a
+      href="https://wa.me/+923001311111"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        position: 'fixed',
+        bottom: '20px',
+        left: '20px',
+        backgroundColor: '#25D366',
+        color: '#fff',
+        borderRadius: '50%',
+        width: '50px',
+        height: '50px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        zIndex: 1000,
+        textDecoration: 'none',
+      }}
+    >
+      <i className="fab fa-whatsapp" style={{ fontSize: '24px' }}></i>
+    </a>
+  );
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "react-app-starter",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "@headlessui/react": "^2.1.2",
+    "@heroicons/react": "^2.1.5",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "aos": "^2.3.4",
+    "axios": "^1.7.7",
+    "fs": "^0.0.1-security",
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^0.542.0",
+    "marked": "^15.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^2.0.5",
+    "react-icons": "^5.2.1",
+    "react-multi-carousel": "^2.8.5",
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.25.1",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.0",
+    "react-share": "^5.1.0",
+    "redux": "^5.0.1",
+    "swiper": "^11.1.14",
+    "web-vitals": "^4.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "generate-sitemap": "node sitemap-generator.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/parser": "^7.26.3",
+    "@babel/traverse": "^7.26.4",
+    "@tailwindcss/typography": "^0.5.15"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "tailwind.config.js",
+  "author": "",
+  "license": "ISC"
+}
+</file>
+
+<file path="public/index.html">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="ZEMAYDAR"
+      content="Recent project.."
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>ZEMAYDAR</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+</file>
+
+<file path="src/App.js">
+import "./index.css";
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+import Home from "./Pages/Home/Home";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import About from "./Pages/About/About";
+import Contact from "./Pages/Contact/Contact";
+
+function App() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      {/* <Footer /> */}
+    </>
+  );
+}
+
+export default App;
+</file>
+
 <file path="src/Components/Navbar/Desktop.jsx">
 import "./Navbar.css";
 import logo from '../../Assets/logo05.png'
@@ -1085,25 +1302,45 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
-import logo from './logo.webp'
+import logo from '../../Assets/logo05.png'
 
 function Mobile() {
   const [nav, setNav] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
+
+  // Effect to handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleNav = () => {
     setNav((prevNav) => !prevNav);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    if (!nav) {
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    } else {
+        document.body.style.overflow = 'auto';
+    }
   };
 
   const handleCrossNav = () => {
-    setNav((prevNav) => !prevNav);
+    setNav(false);
+    document.body.style.overflow = 'auto';
   };
 
   const handleLinkClick = () => {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+    handleCrossNav(); // Close navbar on link click
   };
 
   const toggleDropdown = (menuName) => {
@@ -1111,48 +1348,49 @@ function Mobile() {
   };
 
   const sidebarRef = useRef(null);
-  const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      setNav(false);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("click", handleClickOutside);
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        handleCrossNav();
+      }
     };
-  }, []);
-
-  const img1 = `${process.env.REACT_APP_DOMAIN}/Assets/Logo/experience.png`;
-
-  
+    if (nav) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [nav]);
 
   return (
-    <div className="lg:hidden sticky top-0 bg-white h-16 mb-2 flex items-center w-full z-[10000] shadow-md">
+    <div
+      className={`lg:hidden fixed top-0 flex items-center w-full z-[10000] transition-colors duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="sectionlayout poppins text-[#6C6C6C] flex justify-between items-center w-full">
         <div className="flex items-center justify-center">
           <NavLink to="/" onClick={handleLinkClick}>
             <img
               src={logo}
               loading="lazy"
-              className="max-h-[9vh] max-w-[80%]"
+              className="h-10 my-4 w-auto" // Consistent sizing
               alt="Logo"
             />
           </NavLink>
         </div>
         <div className="flex items-center gap-0">
-          <button className="inline-flex items-center hover:text-[#EC1E24]">
-            
-          </button>
           <button
-            className="inline-flex items-center rounded-md hover:text-[#EC1E24] py-2 px-4 text-lg font-medium"
-            onClick={handleCrossNav}
+            className="inline-flex items-center rounded-md py-2 px-4 text-lg font-medium"
+            onClick={handleNav}
           >
-            <FaBars size={20} className="text-[#EC1E24]" />
+            {/* Hamburger icon color changes with scroll */}
+            <FaBars size={20} className={isScrolled ? "text-[#EC1E24]" : "text-white"} />
           </button>
         </div>
-        <div className={`navbar-menu ${nav ? "open" : ""}`}>
+        
+        {/* Sidebar Menu */}
+        <div ref={sidebarRef} className={`navbar-menu ${nav ? "open" : ""}`}>
           <div className="sticky bg-white shadow-xl border-l border-white/70 overflow-y-auto">
             <ul className="pt-4 px-6 pb-3 overflow-y-auto h-[100vh]">
               <div className="flex justify-end pt-4">
@@ -1173,6 +1411,7 @@ function Mobile() {
                         >
                           <NavLink
                             to={link.path}
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                               `hover:text-[#EC1E24] ${
                                 isActive ? "text-[#EC1E24]" : "text-gray-800"
@@ -1199,7 +1438,7 @@ function Mobile() {
                                       isActive ? "text-[#EC1E24]" : ""
                                     }`
                                   }
-                                  onClick={handleNav}
+                                  onClick={handleLinkClick}
                                 >
                                   {sublink.name}
                                 </NavLink>
@@ -1216,7 +1455,7 @@ function Mobile() {
                             isActive ? "text-[#EC1E24]" : "text-[#6C6C6C]"
                           }`
                         }
-                        onClick={handleNav}
+                        onClick={handleLinkClick}
                       >
                         {link.name}
                       </NavLink>
@@ -1235,26 +1474,6 @@ function Mobile() {
 export default Mobile;
 </file>
 
-<file path="src/Components/Navbar/Navbar.jsx">
-import './Navbar.css'
-import React from 'react'
-import Mobile from './Mobile'
-import Desktop from './Desktop'
-import WhatsApp from './WhatsApp'
-
-function Navbar() {
-  return (
-    <>
-      <Mobile />
-      <Desktop />
-      <WhatsApp />
-    </>
-  )
-}
-
-export default Navbar
-</file>
-
 <file path="src/Data/Navbar.js">
 const Navbar = {
     links: [
@@ -1265,21 +1484,46 @@ const Navbar = {
       
         {
             name: "Services",
-            path: "/services"
+            path: "/"
         },
         {
             name: "About",
-            path: "/about"
+            path: "/"
         },
     
         {
             name: "Contact",
-            path: "/contact"
+            path: "/"
         },        
     ]
 };
 
 export default Navbar;
+</file>
+
+<file path="src/Pages/Home/Home.jsx">
+import React from 'react';
+import Hero from './Hero';
+import Issues from './Issues';
+import Benefits from './Benefits';
+import Risks from './Risks';
+import Methods from './Methods';
+import ExitStrategy from './ExitStrategy';
+
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <Issues />
+      <Benefits />
+      {/* <Methods />
+      <Risks />
+      <ExitStrategy /> */}
+    </>
+  );
+}
+
+export default Home;
 </file>
 
 </files>

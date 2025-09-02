@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
-import logo from '../../Assets/logo05.png'
+import logo from '../../Assets/golden-logo.png'
 
 function Mobile() {
   const [nav, setNav] = useState(false);
@@ -71,7 +71,7 @@ function Mobile() {
         isScrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="sectionlayout poppins text-[#6C6C6C] flex justify-between items-center w-full">
+      <div className="sectionlayout poppins text-black flex justify-between items-center w-full">
         <div className="flex items-center justify-center">
           <NavLink to="/" onClick={handleLinkClick}>
             <img
@@ -88,7 +88,7 @@ function Mobile() {
             onClick={handleNav}
           >
             {/* Hamburger icon color changes with scroll */}
-            <FaBars size={20} className={isScrolled ? "text-[#EC1E24]" : "text-white"} />
+            <FaBars size={20} className={isScrolled ? "text-[#BD872E]" : "text-white"} />
           </button>
         </div>
         
@@ -99,7 +99,7 @@ function Mobile() {
               <div className="flex justify-end pt-4">
                 <TfiClose
                   onClick={handleCrossNav}
-                  className="rounded p-1 font-bold hover:bg-black/5 text-[#EC1E24]"
+                  className="rounded p-1 font-bold hover:bg-black/5 text-[#BD872E]"
                   size={24}
                 />
               </div>
@@ -116,8 +116,8 @@ function Mobile() {
                             to={link.path}
                             onClick={handleLinkClick}
                             className={({ isActive }) =>
-                              `hover:text-[#EC1E24] ${
-                                isActive ? "text-[#EC1E24]" : "text-gray-800"
+                              `hover:text-[#BD872E] ${
+                                isActive ? "text-[#BD872E]" : "text-black"
                               }`
                             }
                           >
@@ -137,8 +137,8 @@ function Mobile() {
                                   to={sublink.path}
                                   key={subIndex}
                                   className={({ isActive }) =>
-                                    `text-[#454545] text-md p-5 py-4 pl-3 hover:rounded hover:bg-black/5 hover:text-[#EC1E24] ${
-                                      isActive ? "text-[#EC1E24]" : ""
+                                    `text-[#454545] text-md p-5 py-4 pl-3 hover:rounded hover:bg-black/5 hover:text-[#BD872E] ${
+                                      isActive ? "text-[#BD872E]" : ""
                                     }`
                                   }
                                   onClick={handleLinkClick}
@@ -154,8 +154,8 @@ function Mobile() {
                       <NavLink
                         to={link.path}
                         className={({ isActive }) =>
-                          `cursor-pointer px-1 flex items-center justify-between Georgian py-3 pl-3 font-medium hover:rounded hover:bg-black/5 hover:text-[#EC1E24] ${
-                            isActive ? "text-[#EC1E24]" : "text-[#6C6C6C]"
+                          `cursor-pointer px-1 flex items-center justify-between Georgian py-3 pl-3 font-medium hover:rounded hover:bg-black/5 hover:text-[#BD872E] ${
+                            isActive ? "text-[#BD872E]" : "text-black"
                           }`
                         }
                         onClick={handleLinkClick}

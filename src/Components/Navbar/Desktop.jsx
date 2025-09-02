@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import logo from '../../Assets/logo05.png'
+import logo from '../../Assets/golden-logo.png'
 import React, { useState, useEffect } from "react"; // Import useState and useEffect
 import { NavLink } from "react-router-dom";
 import Navbar from "../../Data/Navbar";
@@ -79,7 +79,7 @@ const Desktop = () => {
                       `px-4 py-2 rounded-md hover:bg-white/20 transition-colors text-base
                       ${
                         isActive 
-                        ? "font-bold text-[#EC1E24]" 
+                        ? "font-bold text-[#BD872E]" 
                         : isScrolled ? "text-gray-600" : "text-white"
                       } 
                       [font-size:clamp(0.5rem,0.4rem_+_0.5vw,1rem)]`
@@ -96,7 +96,7 @@ const Desktop = () => {
                         `px-4 py-2 rounded-md hover:bg-white/20 transition-colors flex items-center
                         ${
                           isActive
-                            ? "font-bold text-[#EC1E24]"
+                            ? "font-bold text-[#BD872E]"
                             : isScrolled ? "text-gray-600" : "text-white"
                         }
                         [font-size:clamp(0.5rem,0.4rem_+_0.5vw,1rem)]`
@@ -121,7 +121,7 @@ const Desktop = () => {
                             `block px-4 py-2 hover:bg-gray-100 capitalize transition-colors
                             ${
                               isActive
-                                ? "font-bold text-[#EC1E24]"
+                                ? "font-bold text-[#BD872E]"
                                 : "text-gray-600"
                             }`
                           }
