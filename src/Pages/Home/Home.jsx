@@ -11,10 +11,10 @@ const Home = () => {
     <>
       <Hero />
       <Issues />
-      <Benefits />
-      {/* <Methods />
+       <Benefits /> 
+       {/* <Methods />
       <Risks />
-      <ExitStrategy /> */}
+      <ExitStrategy />  */}
     </>
   );
 }

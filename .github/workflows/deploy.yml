@@ -1,0 +1,35 @@
+name: 🚀 Deploy website to Hostinger
+on:
+  push:
+    branches:
+      - main # This workflow runs on pushes to the main branch
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4 # Using a newer version is good practice
+
+    # IMPORTANT: If your site needs a build step (like for React, Vue, etc.),
+    # you must add it here before the deploy step. For example:
+    # - name: 🏗️ Build React App
+    #   run: |
+    #     npm install
+    #     npm run build
+
+    - name: 📂 Sync files to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4 # Use the latest stable version
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        
+        # This tells the action to upload the contents of your 'build' folder.
+        # If your files (e.g., index.html) are in the root of your repo,
+        # change this to: local-dir: ./
+        local-dir: ./build/
+
+        # This is the crucial part for Hostinger. It ensures files go into the correct web root directory.
+        server-dir: public_html/
