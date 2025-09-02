@@ -1,56 +1,33 @@
-# Workflow name
 name: 🚀 Deploy Website to Hostinger
-
-# Triggers the workflow on push events to the 'main' branch
 on:
   push:
     branches:
       - main
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   FTP-Deploy-Job:
     name: 🎉 Deploy
-    runs-on: ubuntu-latest # Use the latest available runner
-
+    runs-on: ubuntu-latest
     steps:
-    # Step 1: Check out the repository code so the workflow can access it
     - name: 🚚 Get latest code
-      uses: actions/checkout@v4 # Using the latest version is recommended
+      uses: actions/checkout@v4
 
-    # ------------------------------------------------------------------
-    # IMPORTANT: ADD YOUR BUILD STEP HERE IF YOU NEED ONE
-    # If you are using a framework like React, Vue, Angular, etc.,
-    # you must build your project before deploying.
-    #
-    # Example for a Node.js project:
+    # --- Add your build step here if needed ---
     # - name: 🏗️ Build project
     #   run: |
     #     npm install
     #     npm run build
-    # ------------------------------------------------------------------
 
-    # Step 2: Deploy the files to the server using the FTP Deploy Action
     - name: 📂 Sync files to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        # FTP server credentials from GitHub Secrets
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-
-        # Explicitly set the port. For standard FTP, this is 21.
         port: 21
 
-        # The local directory from your repository to upload files from.
-        # --- IMPORTANT ---
-        # If your project builds into a 'build' folder, use './build/'
-        # If you have a simple HTML site and your files are in the root, use './'
+        # Adjust this if your build files are not in a 'build' folder
         local-dir: ./build/
         
-        # The destination directory on your Hostinger server.
-        # For Hostinger, this should always be 'public_html/'
-        server-dir: public_html/
-
-        # Enables more detailed logs in the Actions console for better troubleshooting.
-        log-level: verbose
+        # --- THIS IS THE FIX ---
+        # Use './' to upload to the directory the FTP user logs into (public_html).
+        server-dir: ./
