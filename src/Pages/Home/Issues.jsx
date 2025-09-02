@@ -10,15 +10,34 @@ const issues = [
 
 const Issues = () => {
   return (
-    <div className="py-20 bg-gray-50">
+    // 1. Switched to a clean white background for high contrast and a professional feel
+    <div className="py-24 bg-white">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Facing Property Investment Hurdles?</h2>
-        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">Tired of the common issues that plague property investors? We address them head-on.</p>
+        
+        {/* 2. Enhanced Typography to match the 'Benefits' section for consistency */}
+        <h2 className="text-4xl md:text-5xl font-extrabold text-black">
+          Facing Property Investment Hurdles<span className="text-[#BD872E]">.</span>
+        </h2>
+        <p className="text-lg text-gray-700 mt-4 max-w-3xl mx-auto mb-16">
+          Tired of the common issues that plague property investors? We address them head-on.
+        </p>
+
+        {/* 3. Grid for the redesigned issue cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {issues.map((issue, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
-              <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-700">{issue}</h3>
+            
+            // 4. Redesigned Issue Cards with better visual hierarchy and branding
+            <div 
+              key={index} 
+              className="bg-white p-8 rounded-xl border-t-4 border-[#BD872E] shadow-lg transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl"
+            >
+              {/* 5. Icon is now presented in a styled container for emphasis */}
+              <div className="mx-auto mb-6 w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
+                <AlertCircle className="h-8 w-8 text-[#BD872E]" />
+              </div>
+              
+              {/* 6. Larger, more readable font for the issue text */}
+              <h3 className="text-xl font-semibold text-black">{issue}</h3>
             </div>
           ))}
         </div>
