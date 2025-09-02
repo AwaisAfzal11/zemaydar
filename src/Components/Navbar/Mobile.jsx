@@ -5,25 +5,45 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
-import logo from './logo.webp'
+import logo from '../../Assets/logo05.png'
 
 function Mobile() {
   const [nav, setNav] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
+
+  // Effect to handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleNav = () => {
     setNav((prevNav) => !prevNav);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    if (!nav) {
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    } else {
+        document.body.style.overflow = 'auto';
+    }
   };
 
   const handleCrossNav = () => {
-    setNav((prevNav) => !prevNav);
+    setNav(false);
+    document.body.style.overflow = 'auto';
   };
 
   const handleLinkClick = () => {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+    handleCrossNav(); // Close navbar on link click
   };
 
   const toggleDropdown = (menuName) => {
@@ -31,48 +51,49 @@ function Mobile() {
   };
 
   const sidebarRef = useRef(null);
-  const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      setNav(false);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("click", handleClickOutside);
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        handleCrossNav();
+      }
     };
-  }, []);
-
-  const img1 = `${process.env.REACT_APP_DOMAIN}/Assets/Logo/experience.png`;
-
-  
+    if (nav) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [nav]);
 
   return (
-    <div className="lg:hidden sticky top-0 bg-white h-16 mb-2 flex items-center w-full z-[10000] shadow-md">
+    <div
+      className={`lg:hidden fixed top-0 flex items-center w-full z-[10000] transition-colors duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="sectionlayout poppins text-[#6C6C6C] flex justify-between items-center w-full">
         <div className="flex items-center justify-center">
           <NavLink to="/" onClick={handleLinkClick}>
             <img
               src={logo}
               loading="lazy"
-              className="max-h-[9vh] max-w-[80%]"
+              className="h-10 my-4 w-auto" // Consistent sizing
               alt="Logo"
             />
           </NavLink>
         </div>
         <div className="flex items-center gap-0">
-          <button className="inline-flex items-center hover:text-[#EC1E24]">
-            
-          </button>
           <button
-            className="inline-flex items-center rounded-md hover:text-[#EC1E24] py-2 px-4 text-lg font-medium"
-            onClick={handleCrossNav}
+            className="inline-flex items-center rounded-md py-2 px-4 text-lg font-medium"
+            onClick={handleNav}
           >
-            <FaBars size={20} className="text-[#EC1E24]" />
+            {/* Hamburger icon color changes with scroll */}
+            <FaBars size={20} className={isScrolled ? "text-[#EC1E24]" : "text-white"} />
           </button>
         </div>
-        <div className={`navbar-menu ${nav ? "open" : ""}`}>
+        
+        {/* Sidebar Menu */}
+        <div ref={sidebarRef} className={`navbar-menu ${nav ? "open" : ""}`}>
           <div className="sticky bg-white shadow-xl border-l border-white/70 overflow-y-auto">
             <ul className="pt-4 px-6 pb-3 overflow-y-auto h-[100vh]">
               <div className="flex justify-end pt-4">
@@ -93,6 +114,7 @@ function Mobile() {
                         >
                           <NavLink
                             to={link.path}
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                               `hover:text-[#EC1E24] ${
                                 isActive ? "text-[#EC1E24]" : "text-gray-800"
@@ -119,7 +141,7 @@ function Mobile() {
                                       isActive ? "text-[#EC1E24]" : ""
                                     }`
                                   }
-                                  onClick={handleNav}
+                                  onClick={handleLinkClick}
                                 >
                                   {sublink.name}
                                 </NavLink>
@@ -136,7 +158,7 @@ function Mobile() {
                             isActive ? "text-[#EC1E24]" : "text-[#6C6C6C]"
                           }`
                         }
-                        onClick={handleNav}
+                        onClick={handleLinkClick}
                       >
                         {link.name}
                       </NavLink>
