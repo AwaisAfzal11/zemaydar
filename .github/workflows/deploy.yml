@@ -1,35 +1,56 @@
-name: 🚀 Deploy website to Hostinger
+# Workflow name
+name: 🚀 Deploy Website to Hostinger
+
+# Triggers the workflow on push events to the 'main' branch
 on:
   push:
     branches:
-      - main # This workflow runs on pushes to the main branch
+      - main
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  web-deploy:
+  FTP-Deploy-Job:
     name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4 # Using a newer version is good practice
+    runs-on: ubuntu-latest # Use the latest available runner
 
-    # IMPORTANT: If your site needs a build step (like for React, Vue, etc.),
-    # you must add it here before the deploy step. For example:
-    # - name: 🏗️ Build React App
+    steps:
+    # Step 1: Check out the repository code so the workflow can access it
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4 # Using the latest version is recommended
+
+    # ------------------------------------------------------------------
+    # IMPORTANT: ADD YOUR BUILD STEP HERE IF YOU NEED ONE
+    # If you are using a framework like React, Vue, Angular, etc.,
+    # you must build your project before deploying.
+    #
+    # Example for a Node.js project:
+    # - name: 🏗️ Build project
     #   run: |
     #     npm install
     #     npm run build
+    # ------------------------------------------------------------------
 
+    # Step 2: Deploy the files to the server using the FTP Deploy Action
     - name: 📂 Sync files to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4 # Use the latest stable version
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
+        # FTP server credentials from GitHub Secrets
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        
-        # This tells the action to upload the contents of your 'build' folder.
-        # If your files (e.g., index.html) are in the root of your repo,
-        # change this to: local-dir: ./
-        local-dir: ./build/
 
-        # This is the crucial part for Hostinger. It ensures files go into the correct web root directory.
+        # Explicitly set the port. For standard FTP, this is 21.
+        port: 21
+
+        # The local directory from your repository to upload files from.
+        # --- IMPORTANT ---
+        # If your project builds into a 'build' folder, use './build/'
+        # If you have a simple HTML site and your files are in the root, use './'
+        local-dir: ./build/
+        
+        # The destination directory on your Hostinger server.
+        # For Hostinger, this should always be 'public_html/'
         server-dir: public_html/
+
+        # Enables more detailed logs in the Actions console for better troubleshooting.
+        log-level: verbose
