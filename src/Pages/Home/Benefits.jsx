@@ -13,7 +13,7 @@ const benefits = [
 ];
 
 const Benefits = () => {
-  const img2 = `${process.env.REACT_APP_BASE_URL}/Assets/img2.jpg`
+  const img2 = `${process.env.REACT_APP_BASE_URL}/Assets/Home/img2.jpg`
   return (
     // 1. Container with background image
     <div 

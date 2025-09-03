@@ -2,7 +2,7 @@ import React from 'react';
 // import hero from '../../Assets/hero.png'; // Assuming you have a hero image here
 
 const Hero = () => {
-  const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/hero.png`
+  const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/Home/hero.png`
   return (
     <div
       className="relative h-screen bg-cover bg-center"
