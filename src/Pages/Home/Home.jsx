@@ -12,9 +12,9 @@ const Home = () => {
       <Hero />
       <Issues />
        <Benefits /> 
-       {/* <Methods />
+       <Methods />
       <Risks />
-      <ExitStrategy />  */}
+      <ExitStrategy /> 
     </>
   );
 }
