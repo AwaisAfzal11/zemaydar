@@ -1,11 +1,12 @@
 import React from 'react';
-import hero from '../../Assets/hero.png'; // Assuming you have a hero image here
+// import hero from '../../Assets/hero.png'; // Assuming you have a hero image here
 
 const Hero = () => {
+  const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/hero.png`
   return (
     <div
       className="relative h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${hero})` }}
+      style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">

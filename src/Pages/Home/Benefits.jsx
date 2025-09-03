@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
-import img1 from '../../Assets/img2.jpg'; // Your background image
+// import img1 from '../../Assets/img2.jpg'; // Your background image
 
 const benefits = [
   "Strategic Location",
@@ -13,11 +13,12 @@ const benefits = [
 ];
 
 const Benefits = () => {
+  const img2 = `${process.env.REACT_APP_BASE_URL}/Assets/img2.jpg`
   return (
     // 1. Container with background image
     <div 
       className="relative py-24 bg-cover bg-center bg-fixed" // Added bg-fixed for a parallax effect
-      style={{ backgroundImage: `url(${img1})` }}
+      style={{ backgroundImage: `url(${img2})` }}
     >
       {/* 2. A more dynamic gradient overlay for better contrast and visual appeal */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-[#BD872E]/80 to-black/50"></div>
