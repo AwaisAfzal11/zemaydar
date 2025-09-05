@@ -5,12 +5,15 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
-import logo from '../../Assets/golden-logo.png'
+
+// 1. Import BOTH logos instead of just one
+import whiteLogo from '../../Assets/logo-white.png';
+import goldenLogo from '../../Assets/golden-logo.png';
 
 function Mobile() {
   const [nav, setNav] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState(null);
-  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Effect to handle scroll detection
   useEffect(() => {
@@ -30,7 +33,7 @@ function Mobile() {
   const handleNav = () => {
     setNav((prevNav) => !prevNav);
     if (!nav) {
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        document.body.style.overflow = 'hidden';
     } else {
         document.body.style.overflow = 'auto';
     }
@@ -43,7 +46,7 @@ function Mobile() {
 
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
-    handleCrossNav(); // Close navbar on link click
+    handleCrossNav();
   };
 
   const toggleDropdown = (menuName) => {
@@ -75,9 +78,10 @@ function Mobile() {
         <div className="flex items-center justify-center">
           <NavLink to="/" onClick={handleLinkClick}>
             <img
-              src={logo}
+              // 2. Change the src to be conditional based on scroll
+              src={isScrolled ? goldenLogo : whiteLogo}
               loading="lazy"
-              className="h-10 my-4 w-auto" // Consistent sizing
+              className="h-10 my-4 w-auto"
               alt="Logo"
             />
           </NavLink>
@@ -87,12 +91,11 @@ function Mobile() {
             className="inline-flex items-center rounded-md py-2 px-4 text-lg font-medium"
             onClick={handleNav}
           >
-            {/* Hamburger icon color changes with scroll */}
             <FaBars size={20} className={isScrolled ? "text-[#BD872E]" : "text-white"} />
           </button>
         </div>
         
-        {/* Sidebar Menu */}
+        {/* Sidebar Menu - UNCHANGED and FULLY RESTORED */}
         <div ref={sidebarRef} className={`navbar-menu ${nav ? "open" : ""}`}>
           <div className="sticky bg-white shadow-xl border-l border-white/70 overflow-y-auto">
             <ul className="pt-4 px-6 pb-3 overflow-y-auto h-[100vh]">

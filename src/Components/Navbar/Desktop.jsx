@@ -1,19 +1,20 @@
-import "./Navbar.css";
-import logo from '../../Assets/golden-logo.png'
-import React, { useState, useEffect } from "react"; // Import useState and useEffect
-import { NavLink } from "react-router-dom";
-import Navbar from "../../Data/Navbar";
-import { FaFacebookF, FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa";
-import { FaPhone, FaMapMarkerAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import NavbarData from '../../Data/Navbar';
 
-const Desktop = () => {
-  const navigate = useNavigate();
+// 1. Import both of your logos
+import whiteLogo from '../../Assets/logo-white.png';
+import goldenLogo from '../../Assets/golden-logo.png';
+
+import './Navbar.css';
+
+function Desktop() {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Effect to handle scroll detection
   useEffect(() => {
     const handleScroll = () => {
-      // Set isScrolled to true if user has scrolled more than 10px, otherwise false
+      // Set isScrolled to true if user has scrolled more than 10px, false otherwise
       if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
@@ -21,125 +22,62 @@ const Desktop = () => {
       }
     };
 
-    // Add event listener when the component mounts
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-    // Clean up the event listener when the component unmounts
+    // Cleanup function to remove the event listener when the component unmounts
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, []); // Empty dependency array ensures this effect runs only once on mount
 
-
-  const handleGetStartedClick = () => {
-    window.scrollTo(0, 0);
-    navigate("/contact");
-  };
-
-  const handleNavClick = () => {
+  // Function to scroll to top on link click
+  const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
-
-  // const img1 = `${process.env.REACT_APP_DOMAIN}/Assets/logo02.webp`;
-
 
   return (
-    <>
-      {/*
-        Dynamically change navbar style based on scroll position.
-        - When at the top (isScrolled = false), background is transparent.
-        - When scrolled down (isScrolled = true), background becomes white with a shadow.
-      */}
-      <div 
-        className={`hidden lg:block fixed top-0 w-full z-50 transition-colors duration-300 ${
-          isScrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
-      >
-        <div className={`flex items-center justify-between px-8 ${isScrolled ? "border-b" : "border-none"}`}>
+    // Main container: hidden on mobile (lg:flex), fixed position, full width
+    <div
+      className={`hidden lg:flex fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      }`}
+    >
+      {/* Centered content wrapper */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div>
-            <NavLink to="/" onClick={handleNavClick}>
+          <div className="flex-shrink-0">
+            <NavLink to="/" onClick={handleLinkClick}>
               <img
-                src={logo}
-                alt="Company Logo..."
-                className="h-10 my-4 w-auto"
-                loading="lazy"
+                // 2. Conditionally set the src based on the isScrolled state
+                src={isScrolled ? goldenLogo : whiteLogo}
+                alt="Logo"
+                // 3. Removed the CSS filter class name
+                className="h-12 w-auto transition-all duration-300"
               />
             </NavLink>
           </div>
-          <div className="flex items-center">
-            <nav className="flex items-center capppitalize">
-              {Navbar.links.map((link, index) =>
-                !link.submenu ? (
-                  <NavLink
-                    key={index}
-                    to={link.path}
-                    onClick={handleNavClick}
-                    className={({ isActive }) =>
-                      // CHANGED: Removed the clamp function and changed text-base to text-lg
-                      `px-4 py-2 rounded-md hover:bg-white/20 transition-colors text-lg
-                      ${
-                        isActive 
-                        ? "font-bold text-[#BD872E]" 
-                        : isScrolled ? "text-gray-600" : "text-white"
-                      }`
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                ) : (
-                  <div key={index} className="relative group">
-                    <NavLink
-                      to={link.path}
-                      onClick={handleNavClick}
-                      className={({ isActive }) =>
-                        // CHANGED: Removed the clamp function and changed text-base to text-lg
-                        `px-4 py-2 rounded-md hover:bg-white/20 transition-colors flex items-center text-lg
-                        ${
-                          isActive
-                            ? "font-bold text-[#BD872E]"
-                            : isScrolled ? "text-gray-600" : "text-white"
-                        }`
-                      }
-                    >
-                      {link.name}
-                      <img
-                        className="ml-1"
-                        src={`${process.env.PUBLIC_URL}/Assets/icons/dropdown.svg`}
-                        alt="dropdown"
-                        loading="
-                      lazy"
-                      />
-                    </NavLink>
-                    <div className="absolute invisible group-hover:visible mt-0 w-64 bg-white shadow-lg rounded-md">
-                      {link.submenu.map((sublink, subIndex) => (
-                        <NavLink
-                          key={subIndex}
-                          to={sublink.path}
-                          onClick={handleNavClick}
-                          className={({ isActive }) =>
-                            `block px-4 py-2 hover:bg-gray-100 capitalize transition-colors
-                            ${
-                              isActive
-                                ? "font-bold text-[#BD872E]"
-                                : "text-gray-600"
-                            }`
-                          }
-                        >
-                          {sublink.name}
-                        </NavLink>
-                      ))}
-                    </div>
-                  </div>
-                )
-              )}
-            </nav>
-            
-          </div>
+
+          {/* Navigation Links */}
+          <nav className="flex items-center space-x-10">
+            {NavbarData.links.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.path}
+                onClick={handleLinkClick}
+                // Dynamically change text color based on scroll position
+                className={`text-lg font-medium transition-colors duration-300 ${
+                  isScrolled ? 'text-[#BD872E] hover:text-opacity-80' : 'text-white hover:text-opacity-80'
+                }`}
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </nav>
         </div>
       </div>
-    </>
+    </div>
   );
-};
+}
 
 export default Desktop;
