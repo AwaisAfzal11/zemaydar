@@ -4,19 +4,13 @@ const Navbar = {
             name: "Home",
             path: "/"
         },
-      
-        {
-            name: "Services",
-            path: "/"
-        },
         {
             name: "About",
-            path: "/"
-        },
-    
+            path: "/about"
+        },    
         {
             name: "Contact",
-            path: "/"
+            path: "/contact"
         },        
     ]
 };

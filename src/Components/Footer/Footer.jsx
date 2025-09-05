@@ -1,22 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaYoutube} from 'react-icons/fa';
 import logo from '../../Assets/logo.webp'; // Make sure your logo is at this path
 
 const Footer = () => {
   const quickLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/' },
-    { name: 'About', path: '/' },
-    { name: 'Contact', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const socialLinks = [
-    { icon: <FaFacebookF />, href: '#' },
-    { icon: <FaTwitter />, href: '#' },
-    { icon: <FaInstagram />, href: '#' },
-    { icon: <FaLinkedinIn />, href: '#' },
+    { icon: <FaFacebookF />, href: 'https://www.facebook.com/Zemaydar.pk' },
+    { icon: <FaYoutube />, href: 'https://youtube.com/@zemaydar' },
+    { icon: <FaLinkedinIn />, href: 'https://pk.linkedin.com/company/zemaydar-com' },
   ];
 
   return (
