@@ -9,8 +9,8 @@ import NavbarData from '../../Data/Navbar';
 import './Navbar.css';
 
 function Desktop() {
-  const whiteLogo = `${process.env.REACT_APP_BASE_URL}/Assets/logo-white.png`
-  const goldenLogo = `${process.env.REACT_APP_BASE_URL}/Assets/golden-logo.png`
+  const whiteLogo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo-white.png`
+  const goldenLogo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/golden-logo.png`
 
 
   const [isScrolled, setIsScrolled] = useState(false);
