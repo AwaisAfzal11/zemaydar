@@ -5,6 +5,7 @@ import NavbarData from '../../Data/Navbar';
 // 1. Import both of your logos
 import whiteLogo from '../../Assets/logo-white.png';
 import goldenLogo from '../../Assets/golden-logo.png';
+// const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/Home/hero.png`
 
 import './Navbar.css';
 

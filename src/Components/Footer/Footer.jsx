@@ -1,159 +1,128 @@
 import React from 'react';
-import { MapPin, Phone, Mail, GlobeIcon } from 'lucide-react';
-import { FaFacebook, FaTiktok, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import logo from '../../Assets/logo.webp'; // Make sure your logo is at this path
 
 const Footer = () => {
-  const services = [
-    { name: 'Mainland Company Formation', path: '/mainland' },
-    { name: 'Free Zone Company Formation', path: '/freezone' },
-    { name: 'Offshore Company Formation', path: '/offshore' },
-    { name: 'PRO Services', path: '/pro-services' },
-    { name: 'Corporate Bank Account Opening', path: '/corporate-bank-account-opening' },
-    { name: 'Accounting & Bookkeeping', path: '/accounting-bookkeeping' },
-    { name: 'Other Services', path: '/other-services' },
+  const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/' },
+    { name: 'About', path: '/' },
+    { name: 'Contact', path: '/' },
   ];
 
-  const menuItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Blogs', path: '/blogs' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Contact Us', path: '/contact' },
-    { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Golden Visa', path: '/goldenVisa' },
+  const socialLinks = [
+    { icon: <FaFacebookF />, href: '#' },
+    { icon: <FaTwitter />, href: '#' },
+    { icon: <FaInstagram />, href: '#' },
+    { icon: <FaLinkedinIn />, href: '#' },
   ];
 
   return (
-    <footer className="bg-[#3D498A] text-white pt-12 pb-6 container mx-auto">
-      <div className="px-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-        <div className="space-y-6 sm:max-w-7 md:max-w-[230px]">
-          <img
-            src='https://rightone.ae/Assets/Logo/blueLogo.png'
-            alt="Consultancy"
-            className=" rounded-[10px]"
-          />
-          <p className="text-white text-[16px] text-justify">
-            We have capabilities and experience to deliver the answers you need to move forward.
-          </p>
-          <div className="">
-            <a href="https://wa.me/+971526919516" target="_blank" rel="noopener noreferrer">
-              <button className="bg-white text-[#3D498A] text-[16px] w-[100%] py-2 rounded-md">
-                Free Consultation
-              </button>
-            </a>
+    <>
+      {/* Part 1: Call-to-Action Section */}
+      <div className="bg-[#BD872E]">
+        <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center text-white text-center md:text-left">
+          <div>
+            <h2 className="text-3xl font-bold">Ready to Secure Your Investment?</h2>
+            <p className="text-white/80 mt-1">Let's talk about your next venture with ZEMAYDAR.</p>
           </div>
-        </div>
-        <div className="space-y-6">
-          <h3 className="text-lg font-bold">CONTACT INFO</h3>
-          <div className="space-y-4 text-white">
-            <p className="flex items-start">
-              <MapPin className="mr-2 h-5 w-5 mt-1 flex-shrink-0" />
-              Right One Corporate Services LLC - Ground Floor , Office # 55 , Al Gurg Building , Umm Hurair Rd , Dubai - U.A.E
-            </p>
-            <p className="flex items-center">
-              <Mail className="mr-2 h-5 w-5" />
-              info@rightone.ae
-            </p>
-            <p className="flex items-center">
-              <GlobeIcon className="mr-2 h-5 w-5" />
-              www.rightone.ae
-            </p>
-            <p className="flex flex-col items-start">
-              <span className="flex items-center">
-                <Phone className="mr-2 h-5 w-5" />
-                Landline: +971 42 224 797
-              </span>
-            </p>
-            <p className="flex flex-col items-start">
-              <span className="flex items-center">
-                <Phone className="mr-2 h-5 w-5" />
-                Mobile: +971 50 983 3635
-              </span>
-            </p>
-          </div>
-          <div className="flex space-x-4">
-            <a
-              href="https://www.facebook.com/rightonecorporateservices"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl hover:text-blue-500 transition-colors"
-            >
-              <FaFacebook />
-            </a>
-            <a
-              href="https://www.tiktok.com/@rightonecorporate"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl hover:text-blue-400 transition-colors"
-            >
-              <FaTiktok />
-            </a>
-            <a
-              href="https://ae.linkedin.com/company/right-one-corporate-services"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl hover:text-blue-600 transition-colors"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="https://www.instagram.com/rightonecorporateservices/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl hover:text-pink-500 transition-colors"
-            >
-              <FaInstagram />
-            </a>
-          </div>
-        </div>
-        <div>
-          <h3 className="text-lg font-bold mb-6">CORPORATE SERVICES</h3>
-          <ul className="space-y-3">
-            {services.map((service, index) => (
-              <li key={index}>
-                <Link
-                  to={service.path}
-                  className="text-white hover:text-white transition-colors"
-                >
-                  {service.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-lg font-bold mb-6">Quick Links</h3>
-          <ul className="space-y-3">
-            {menuItems.map((item, index) => (
-              <li key={index}>
-                <Link
-                  to={item.path}
-                  className="text-white hover:text-white transition-colors"
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <a
+            href="https://wa.me/923116111111"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 md:mt-0 bg-white text-black font-bold py-3 px-6 rounded-lg flex items-center gap-2 hover:bg-gray-200 transition-colors duration-300"
+          >
+            Get in Touch <ChevronRight size={20} />
+          </a>
         </div>
       </div>
-      <div className="mx-auto px-4 mt-12 pt-6 border-t max-w-custom">
-        <div className="flex flex-col sm:flex-row justify-between items-center text-white mx-8 space-y-4 sm:space-y-0">
-          <div className="text-center sm:text-left">
-            <span>© 2024 RIGHT ONE CORPORATE SERVICES. ALL RIGHTS RESERVED</span>
-          </div>
-          <div className="space-x-4 text-center sm:text-right">
-            <Link to="/" className="hover:text-white transition-colors">
-              Home
-            </Link>
-            <span>|</span>
-            <Link to="/contact" className="hover:text-white transition-colors">
-              Contact Us
-            </Link>
+
+      {/* Part 2: Main Footer */}
+      <footer className="bg-gray-100">
+        <div className="container mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            {/* Column 1: Logo, Tagline, and Socials */}
+            <div className="space-y-6 md:col-span-1">
+              <img src={logo} alt="ZEMAYDAR Logo" className="w-36" />
+              <p className="text-gray-600 text-sm">
+                Your trusted partner in strategic land investment and property ventures.
+              </p>
+              <div className="flex space-x-3">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-[#BD872E] hover:bg-[#BD872E] hover:text-white transform hover:scale-110 transition-all duration-300"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Column 2: Contact Information */}
+            <div>
+              <h3 className="text-lg font-semibold text-black mb-4 uppercase tracking-wider">Contact Info</h3>
+              <ul className="space-y-4 text-gray-700">
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 mt-1">
+                    <MapPin className="h-5 w-5 text-[#BD872E]" />
+                  </div>
+                  <span>Office # 04, Behind Kiani House, Near DHA Phase 2, Islamabad, Pakistan</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 mt-1">
+                    <Mail className="h-5 w-5 text-[#BD872E]" />
+                  </div>
+                  <a href="mailto:info@zemaydar.com" className="hover:text-[#BD872E] transition-colors">
+                    info@zemaydar.com
+                  </a>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 mt-1">
+                    <Phone className="h-5 w-5 text-[#BD872E]" />
+                  </div>
+                  <a href="tel:+923116111111" className="hover:text-[#BD872E] transition-colors">
+                    +92 311 6111111
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Quick Links */}
+            <div>
+              <h3 className="text-lg font-semibold text-black mb-4 uppercase tracking-wider">Quick Links</h3>
+              <ul className="space-y-3">
+                {quickLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.path}
+                      className="text-gray-700 hover:text-[#BD872E] flex items-center gap-2 transition-colors"
+                    >
+                      <ChevronRight size={16} className="text-[#BD872E]" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
           </div>
         </div>
-      </div>
-    </footer>
+
+        {/* Bottom Copyright Bar */}
+        <div className="border-t border-gray-200 py-6">
+          <div className="container mx-auto px-6 text-center text-gray-500 text-sm">
+            <span>© {new Date().getFullYear()} ZEMAYDAR. All Rights Reserved.</span>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 };
 
