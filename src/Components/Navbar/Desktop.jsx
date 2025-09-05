@@ -3,13 +3,16 @@ import { NavLink } from 'react-router-dom';
 import NavbarData from '../../Data/Navbar';
 
 // 1. Import both of your logos
-import whiteLogo from '../../Assets/logo-white.png';
-import goldenLogo from '../../Assets/golden-logo.png';
-// const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/Home/hero.png`
+// import whiteLogo from '../../Assets/logo-white.png';
+// import goldenLogo from '../../Assets/golden-logo.png';
 
 import './Navbar.css';
 
 function Desktop() {
+  const whiteLogo = `${process.env.REACT_APP_BASE_URL}/Assets/logo-white.png`
+  const goldenLogo = `${process.env.REACT_APP_BASE_URL}/Assets/golden-logo.png`
+
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Effect to handle scroll detection

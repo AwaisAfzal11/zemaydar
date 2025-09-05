@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 import { FaFacebookF, FaLinkedinIn, FaYoutube} from 'react-icons/fa';
-import logo from '../../Assets/logo.webp'; // Make sure your logo is at this path
+// import logo from '../../Assets/logo.webp'; // Make sure your logo is at this path
 
 
 const Footer = () => {
-  // const logo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo.webp`
+  const logo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo.webp`
+
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
