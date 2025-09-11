@@ -5,7 +5,8 @@ const Hero = () => {
   const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/Home/hero.png`
   return (
     <div
-      className="relative h-screen bg-cover bg-center"
+      // Changed h-screen to h-[70vh] here
+      className="relative h-[70vh] bg-cover bg-center"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
