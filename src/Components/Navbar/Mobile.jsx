@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 import NavbarData from "../../Data/Navbar";
 import "./Navbar.css";
 
-// 1. Import BOTH logos instead of just one
-import whiteLogo from '../../Assets/logo-white.png';
-import goldenLogo from '../../Assets/golden-logo.png';
+// 1. Corrected the import paths to be consistent with the rest of the app
+import whiteLogo from '../../Assets/Home/logo-white.png';
+import goldenLogo from '../../Assets/Home/golden-logo.png';
 
 function Mobile() {
   const [nav, setNav] = useState(false);

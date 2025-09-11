@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavbarData from '../../Data/Navbar';
-
-// 1. Import both of your logos
-// import whiteLogo from '../../Assets/logo-white.png';
-// import goldenLogo from '../../Assets/golden-logo.png';
-
+import whiteLogo from '../../Assets/Home/logo-white.png';
+import goldenLogo from '../../Assets/Home/golden-logo.png';
 import './Navbar.css';
 
 function Desktop() {
-  const whiteLogo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo-white.png`
-  const goldenLogo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/golden-logo.png`
+  // const whiteLogo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo-white.png` // Removed
+  // const goldenLogo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/golden-logo.png` // Removed
 
 
   const [isScrolled, setIsScrolled] = useState(false);

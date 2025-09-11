@@ -1,13 +1,13 @@
 import React from 'react';
-// import hero from '../../Assets/hero.png'; // Assuming you have a hero image here
+import heroImage from '../../Assets/Home/hero.png'; // Correctly import the image
 
 const Hero = () => {
-  const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/Home/hero.png`
+  // const heroImage = `${process.env.REACT_APP_BASE_URL}/Assets/Home/hero.png` // This line is removed
   return (
     <div
       // Changed h-screen to h-[70vh] here
       className="relative h-[70vh] bg-cover bg-center"
-      style={{ backgroundImage: `url(${heroImage})` }}
+      style={{ backgroundImage: `url(${heroImage})` }} // Use the imported variable
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
