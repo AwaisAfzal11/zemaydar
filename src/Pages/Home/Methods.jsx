@@ -2,57 +2,88 @@ import React from 'react';
 
 const investmentMethods = [
   {
-    title: "Method 01 (Intaqal)",
-    description: "Direct transfer of ownership to the investor's name.",
+    option: "01",
+    tenure: "18 Months",
+    title: "(INTAQAL)",
+    details: [
+      "Buy 5 Marla or upto 4 Kanal Land.",
+      "Get Intaqal of that land in your name (Govt. transfer charges will be applicable).",
+      "The company executes a Buy Back Agreement with you at Rs: 700,000 per kanal."
+    ]
   },
   {
-    title: "Method 02 (Post-Dated Cheques)",
-    description: "Involves a buy-back agreement with the company.",
+    option: "02",
+    tenure: "18 Months",
+    title: "(POST DATED CHEQUES)",
+    details: [
+      "Buy 5 Marla or upto 4 Kanal Land.",
+      "The company executes a Buy Back Agreement with you at Rs: 700,000 per kanal and provides cheques of the same value. Transfer that land into the company name.",
+      "(The company will pay the transfer charges)."
+    ]
   },
   {
-    title: "Method 03 (Certificate)",
-    description: "The company issues a certificate of ownership equal to the land's purchase value.",
-  },
+    option: "03",
+    tenure: "18 Months",
+    title: "(CERTIFICATE)",
+    details: [
+      "Buy 5 Marla or upto 4 Kanal Land.",
+      "Company executes a Buy Back Agreement with you at Rs: 700,000 per kanal and provides a certificate of ownership equal to the Purchase Value of the land. Transfer that land into the company name.",
+      "(Company will pay the transfer charges)."
+    ]
+  }
 ];
 
 const Methods = () => {
   return (
-    // 1. Using a light gray background to differentiate from other sections
-    <div className="py-24 bg-gray-50">
+    // 1. Using a clean white background as shown in the image
+    <div className="py-24 bg-white">
       <div className="container mx-auto px-6">
         
-        {/* 2. Consistent Typography and Branding */}
+        {/* 2. Replicating the title structure from the image */}
         <div className="text-center mb-16">
+          <p className="text-sm font-medium text-[#BD872E] tracking-widest mb-2">GOLDMARK LAND VENTURES</p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-black">
-            The Way to Join Us<span className="text-[#BD872E]">.</span>
+            THE WAY TO JOIN US
           </h2>
-          <p className="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
-            Choose the investment method that suits you best.
-          </p>
         </div>
 
-        {/* 3. Grid for the redesigned method cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {investmentMethods.map((method, index) => (
+        {/* 3. Grid for the investment method cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {investmentMethods.map((method) => (
             
-            // 4. Redesigned Method Card with a sophisticated, layered look
+            // 4. Building the card to precisely match the image's design
             <div 
-              key={index} 
-              className="relative bg-white p-8 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl"
+              key={method.option} 
+              className="bg-white rounded-lg shadow-xl flex flex-col overflow-hidden border border-gray-200"
             >
-              {/* 5. Large, stylized number in the background for visual appeal */}
-              <div className="absolute -top-2 -right-2 text-[100px] font-black text-gray-100 opacity-80">
-                0{index + 1}
-              </div>
-              
-              {/* 6. Card content is relative to sit on top of the background number */}
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-black mb-4">{method.title}</h3>
-                <p className="text-gray-600 text-base">{method.description}</p>
+              {/* Card Header */}
+              <div className="bg-[#BD872E] text-white p-5 text-center">
+                <h3 className="text-lg font-bold">OPTION {method.option}</h3>
+                <p className="font-medium">(Tenure {method.tenure})</p>
               </div>
 
-              {/* 7. Subtle branded accent at the bottom of the card */}
-              <div className="absolute bottom-0 left-0 h-1.5 w-full bg-[#BD872E]"></div>
+              {/* Card Body */}
+              <div className="p-8 flex flex-col flex-grow">
+                <h4 className="text-3xl font-bold text-[#BD872E] text-center mb-8">
+                  {method.title}
+                </h4>
+
+                {/* Details separated by lines */}
+                <div className="space-y-6 text-center text-gray-600 flex-grow">
+                  {method.details.map((point, index) => (
+                    <p key={index} className="border-b border-gray-200 pb-6 last:border-b-0">
+                      {point}
+                    </p>
+                  ))}
+                </div>
+                
+                {/* ROI Button/Badge */}
+                <div className="mt-8 text-center">
+                  <div className="inline-block bg-[#BD872E] text-white font-bold py-3 px-8 rounded-md">
+                    ROI: 50% & Above*
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
