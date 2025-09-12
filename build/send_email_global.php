@@ -31,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Construct the email message
     $email_content = "You have received a new message from your website contact form.\n\n"
-                   . "========================================\n"
+                   . "===========================================\n"
                    . "SENDER DETAILS\n"
-                   . "========================================\n"
+                   . "===========================================\n"
                    . "Full Name: {$fullName}\n"
                    . "Email: {$email}\n"
                    . "Phone Number: {$phone}\n\n"
