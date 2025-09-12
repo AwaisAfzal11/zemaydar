@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+// import php_script from '../../../send_email_global.php';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
