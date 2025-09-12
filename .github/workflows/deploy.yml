@@ -26,7 +26,7 @@ jobs:
         port: 21
 
         # Adjust this if your build files are not in a 'build' folder
-        local-dir: ./build/
+        local-dir: ./
         
         # --- THIS IS THE FIX ---
         # Use './' to upload to the directory the FTP user logs into (public_html).
