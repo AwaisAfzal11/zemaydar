@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // --- Email Configuration ---
-    $to = "awaisafzal11111@gmail.com";
+    $to = "afzalawais353@gmail.com";
     $subject = "New Contact Form Submission from: " . $fullName;
     
     // Construct the email message
