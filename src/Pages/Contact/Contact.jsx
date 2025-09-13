@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-// import php_script from '../../../send_email_global.php';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -86,8 +85,8 @@ const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold text-black">Email</h3>
                 <p className="text-gray-600">Our friendly team is here to help.</p>
-                <a href="mailto:info@zemaydar.com" className="text-[#BD872E] font-semibold hover:underline">
-                  info@zemaydar.com
+                <a href="mailto:zemaydar@gmail.com" className="text-[#BD872E] font-semibold hover:underline">
+                  zemaydar@gmail.com
                 </a>
               </div>
             </div>
@@ -99,8 +98,8 @@ const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold text-black">Phone</h3>
                 <p className="text-gray-600">Mon-Fri from 9am to 5pm.</p>
-                <a href="tel:+923116111111" className="text-[#BD872E] font-semibold hover:underline">
-                  +92 311 6111111
+                <a href="tel:+923331111114" className="text-[#BD872E] font-semibold hover:underline">
+                  +92 333 111 111 4
                 </a>
               </div>
             </div>
@@ -110,10 +109,10 @@ const Contact = () => {
                 <MapPin size={24} />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-black">Office</h3>
-                <p className="text-gray-600">Come say hello at our office HQ.</p>
+                <h3 className="text-xl font-bold text-black">HEAD QUARTER</h3>
+                <p className="text-gray-600">A Goldmine and SouthCity Consortium</p>
                 <p className="text-[#BD872E] font-semibold">
-                  Office # 04, Behind Kiani House, Near DHA Phase 2, Islamabad, Pakistan.
+                  Plot # 03, 04 & 05, Near Kiani House, Opposite ATTOCK Petrol Pump, DHA Phase 02, GT Road, Islamabad, Pakistan
                 </p>
               </div>
             </div>

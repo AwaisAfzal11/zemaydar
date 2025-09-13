@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavbarData from '../../Data/Navbar';
-import whiteLogo from '../../Assets/Home/logo-white.png';
-import goldenLogo from '../../Assets/Home/golden-logo.png';
+import whiteLogo from '../../Assets/Home/white_logo.png';
+import goldenLogo from '../../Assets/Home/golden_logo.png';
 import './Navbar.css';
 
 function Desktop() {

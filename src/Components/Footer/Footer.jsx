@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 import { FaFacebookF, FaLinkedinIn, FaYoutube} from 'react-icons/fa';
-// import logo from '../../Assets/logo.webp'; // Make sure your logo is at this path
+import logo from '../../../src/Assets/Home/zemaydar.webp'; // Make sure your logo is at this path
 
 
 const Footer = () => {
-  const logo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo.webp`
+  // const logo = `${process.env.REACT_APP_BASE_URL}/Assets/Home/logo.webp`
 
   const quickLinks = [
     { name: 'Home', path: '/' },
@@ -74,22 +74,22 @@ const Footer = () => {
                   <div className="flex-shrink-0 w-6 mt-1">
                     <MapPin className="h-5 w-5 text-[#BD872E]" />
                   </div>
-                  <span>Office # 04, Behind Kiani House, Near DHA Phase 2, Islamabad, Pakistan</span>
+                  <span>Plot # 03, 04 & 05, Near Kiani House, Opposite ATTOCK Petrol Pump, DHA Phase 02, GT Road, Islamabad, Pakistan</span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 w-6 mt-1">
                     <Mail className="h-5 w-5 text-[#BD872E]" />
                   </div>
-                  <a href="mailto:info@zemaydar.com" className="hover:text-[#BD872E] transition-colors">
-                    info@zemaydar.com
+                  <a href="mailto:zemaydar@gmail.com" className="hover:text-[#BD872E] transition-colors">
+                    zemaydar@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 w-6 mt-1">
                     <Phone className="h-5 w-5 text-[#BD872E]" />
                   </div>
-                  <a href="tel:+923116111111" className="hover:text-[#BD872E] transition-colors">
-                    +92 311 6111111
+                  <a href="tel:+923331111114" className="hover:text-[#BD872E] transition-colors">
+                    +92 333 111 111 4
                   </a>
                 </li>
               </ul>

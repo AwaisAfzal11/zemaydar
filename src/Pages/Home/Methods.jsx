@@ -8,7 +8,7 @@ const investmentMethods = [
     details: [
       "Buy 5 Marla or upto 4 Kanal Land.",
       "Get Intaqal of that land in your name (Govt. transfer charges will be applicable).",
-      "The company executes a Buy Back Agreement with you at Rs: 700,000 per kanal."
+      "The company executes a Buy Back Agreement with you at Rs: 880,000 per kanal."
     ]
   },
   {
@@ -17,7 +17,7 @@ const investmentMethods = [
     title: "(POST DATED CHEQUES)",
     details: [
       "Buy 5 Marla or upto 4 Kanal Land.",
-      "The company executes a Buy Back Agreement with you at Rs: 700,000 per kanal and provides cheques of the same value. Transfer that land into the company name.",
+      "The company executes a Buy Back Agreement with you at Rs: 880,000 per kanal and provides cheques of the same value. Transfer that land into the company name.",
       "(The company will pay the transfer charges)."
     ]
   },
@@ -27,7 +27,7 @@ const investmentMethods = [
     title: "(CERTIFICATE)",
     details: [
       "Buy 5 Marla or upto 4 Kanal Land.",
-      "Company executes a Buy Back Agreement with you at Rs: 700,000 per kanal and provides a certificate of ownership equal to the Purchase Value of the land. Transfer that land into the company name.",
+      "Company executes a Buy Back Agreement with you at Rs: 880,000 per kanal and provides a certificate of ownership equal to the Purchase Value of the land. Transfer that land into the company name.",
       "(Company will pay the transfer charges)."
     ]
   }
